@@ -1,0 +1,124 @@
+.main-page-slider {
+    width: 1180px;
+    margin: 0 auto;
+    .slick-prev{
+      position: absolute;
+      top: 175px;
+      left: -25px;
+      color: transparent;
+      outline: none;
+      background: transparent;
+      font-size: 0;
+      line-height: 0;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      cursor: pointer;
+      border: none;
+      &:before{
+        content: "\2190";
+        color: #000;
+        font-family: slick;
+        font-size: 20px;
+        line-height: 1;
+        opacity: .75; 
+      }
+    }
+    .slick-next{
+      position: absolute;
+      top: 175px;
+      right: -25px;
+      color: transparent;
+      outline: none;
+      background: transparent;
+      font-size: 0;
+      line-height: 0;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      cursor: pointer;
+      border: none;
+      &:before{
+        content: "\2192";
+        color: #000;
+        font-family: slick;
+        font-size: 20px;
+        line-height: 1;
+        opacity: .75; 
+      }
+    }
+    .slick-slide {
+      display: inline-block;
+      height: 200px;
+      &-blocks {
+        margin: auto;
+        height: 350px;
+        background-color: red;
+      }
+    }
+    .slick-slider{
+      position: relative;
+    }
+
+    .slick-list{
+      overflow: hidden;
+    }
+
+    .slick-dots{
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+      .slick-active button::before{
+        opacity: 1;
+      }
+      li{
+        position: relative;
+        display: inline-block;
+        margin: 0 5px;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        button{
+          width: 20px;
+          height: 20px;
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          padding: 5px;
+          color: transparent;
+          border: 0;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
+          &::before{
+            opacity: 0.5;
+            box-sizing: inherit;
+            font-family: slick;
+            font-size: 20px;
+            line-height: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            content: "\2022";
+            text-align: center;
+            color: #000;
+            -webkit-font-smoothing: antialiased;
+          }
+        }
+      }
+    }
+}
+  
+
+
+
+
