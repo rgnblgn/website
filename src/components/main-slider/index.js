@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import style from './index.scss'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchProducts ,fetchDogs } from '../../service/images/action';
+import { fetchProducts ,fetchWeather } from '../../service/images/action';
 
 function SimpleSlider(props) {
   const settings = {
@@ -16,11 +16,14 @@ function SimpleSlider(props) {
 
   useEffect(() => {
     props.fetchProducts();
-    props.fetchDogs();
+    props.fetchWeather();
 
   },[]);
 
-  console.log(props.dogs)
+  console.log(props.weather)
+
+  let currentTime = new Date().getHours()
+  let tempTexts = ["Mevcut Sıcaklık","Yarın","Sonraki Gün"];
 
   return (
     <div className="main-page-slider">
@@ -32,6 +35,9 @@ function SimpleSlider(props) {
       </div>
       })}
     </Slider>
+    { props.weather &&  tempTexts.map((item,index) =>{
+        return <div>{item} = {Math.floor(props.weather[(index*24) + currentTime]['airTemperature']['noaa'])} C</div>
+    })}
     </div>
   );
 }
@@ -39,12 +45,13 @@ function SimpleSlider(props) {
 SimpleSlider.propTypes = {
   fetchProducts: PropTypes.func,
   images: PropTypes.array,
-  dogs: PropTypes.object
+  weather: PropTypes.array
 }
 
 function mapStateToProps(state) {
-  return {images: state.images.images,
-  dogs:state}
+  return {
+    images: state.images.images,
+    weather:state.images.weather}
 } 
 
-export default connect(mapStateToProps,{fetchProducts,fetchDogs})(SimpleSlider);
+export default connect(mapStateToProps,{fetchProducts,fetchWeather})(SimpleSlider);

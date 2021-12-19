@@ -9,10 +9,10 @@ export default function(state = initialState, action) {
           ...state,
           images: action.payload
         };
-        case "FETCH_DOGS":
+        case "FETCH_WEATHER":
           return {
             ...state,
-            dogs: action.payload
+            weather: action.payload
           };
       default:
         return state;

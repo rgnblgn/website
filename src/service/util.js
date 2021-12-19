@@ -1,0 +1,1 @@
+export const API_KEY = "You need to register stormglass.io to get Api Key"

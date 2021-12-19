@@ -1,7 +1,12 @@
 import axios from 'axios';
+import { API_KEY } from '../util';
 
 const imagesApi = "http://localhost:8001/api/images"
-const dogApi = "https://official-joke-api.appspot.com/random_joke";
+//const dogApi = "https://official-joke-api.appspot.com/random_joke";
+
+const lat = 41.091072;
+const lng = 29.01278721;
+const params = 'waveHeight,airTemperature';
 
 export const fetchProducts = () => dispatch => {
   return axios
@@ -19,18 +24,23 @@ export const fetchProducts = () => dispatch => {
     });
 };
 
-export const fetchDogs = () => dispatch => {
+export const fetchWeather = () => dispatch => {
   return axios
-    .get(dogApi)
+    .get(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`,{
+      headers: {
+        Authorization: API_KEY
+      }
+     })
     .then(res => {
-      let  dogs  = res.data;
+      let  weather  = res.data.hours;
 
       return dispatch({
-        type: "FETCH_DOGS",
-        payload: dogs
+        type: "FETCH_WEATHER",
+        payload: weather
       });
     })
     .catch(err => {
-      console.log('Could not fetch dogs. Try again later.');
+      console.log('Could not fetch weather. Try again later.');
+      console.log(err)
     });
 };
