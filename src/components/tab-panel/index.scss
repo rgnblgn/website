@@ -1,0 +1,52 @@
+.tabPanelContainer{
+    width: 1180px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: gray;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    ul {
+        padding: 0;
+        li{
+            list-style-type: none;
+            padding: 0;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            &:hover{
+                background-color: black;
+                color: white;
+            }
+        }
+    }  
+    .leftPanel{
+        width: 100px;
+        height: 400px;
+        background-color: beige;
+        float: left;
+        margin-top: 100px;
+        ul {
+            text-align: center;
+        } 
+    }
+    .topPanel{
+        width: 1080px;
+        height: 100px;
+        background-color:burlywood;
+        float: left;
+        ul{
+            margin-left: 20px;
+            li{
+                float: left;
+                margin-right: 50px;
+            }
+        }
+    
+    }
+    .panelDisplay{
+        float: left;
+        width: 1080px;
+        height: 400px;
+        background-color: lightskyblue;
+    }
+}
