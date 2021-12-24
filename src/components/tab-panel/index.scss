@@ -48,5 +48,15 @@
         width: 1080px;
         height: 400px;
         background-color: lightskyblue;
+        .panel{
+            display: none;
+            width: 90%;
+            height: 90%;
+            margin: 20px auto;
+            &.selected{
+                display: block;
+                background-color: blueviolet;
+            }
+        }
     }
 }
