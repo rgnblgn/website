@@ -1,0 +1,32 @@
+{
+    "tabs": [
+        {
+            "title":"Men",
+            "subTabs":["Shirt","Jacket","Shorts","Jeans","Suits","Underwear","Coats"]
+        },
+        {
+            "title":"Women",
+            "subTabs":["Dresses","Skirts","Shorts","Jeans","Blouse","Underwear","Coats"]
+        },
+        {
+            "title":"Shoes",
+            "subTabs":["Men","Women","Kids","Sport","Classic","Winter","Summer"]
+        },
+        {
+            "title":"Tech",
+            "subTabs":["PC","Mobile","Television","Game","White","Drones","Accessory"]
+        },
+        {
+            "title":"Car",
+            "subTabs":["Cars1","Cars2","Cars3","Cars4","Cars5","Cars6","Cars7"]
+        },
+        {
+            "title":"Home",
+            "subTabs":["Home1","Home2","Home3","Home4","Home5","Home6","Home7"]
+        },
+        {
+            "title":"Kids",
+            "subTabs":["Shirts","Shorts","Shoes","Toys","Baby","Furniture","Etc."]
+        }
+    ]
+  }
