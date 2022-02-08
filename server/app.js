@@ -12,6 +12,10 @@ app.get('/api/images', (req, res) => {
   res.sendFile(path.join(__dirname, 'data', 'products.json'));
 });
 
+app.get('/api/tabs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'data', 'tabHeaders.json'));
+});
+
 app.listen(port, () => {
   console.log(`[products] API listening on port ${port}.`);
 });
