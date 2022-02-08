@@ -1,11 +1,17 @@
-import React, {useState} from 'react'
-import style from './index.scss'
+import React, {useState, useEffect} from "react"
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {fetchTabHeaders} from '../../service/tab-panel/action'
+import "./index.scss"
 
-export default function TabPanel(props){
+function TabPanel(props){
     
     const [selectedIndex,setSelectedIndex] = useState(0)
     const [selectedMenuIndex,setSelectedMenuIndex] = useState(0)
 
+    useEffect(()=>{
+        props.fetchTabHeaders()
+    },[])
 
     const handleLeftClick = (e)=>{
         setSelectedIndex(e)
@@ -17,43 +23,43 @@ export default function TabPanel(props){
 
     const exArr = [0,1,2,3,4,5,6]
 
-    const topMenus = ['Men','Women','Shoes','Tech','Kids','Car','Home']
-
-    const menSubmenus = ['Shirt','Jacket','Shorts','Jeans','Suits','Underwear','Coats']
-    const womenSubmenus = ['Dresses','Skirts','Shorts','Jeans','Blouse','Underwear','Coats']
-    const shoesSubmenus = ['Men','Women','Kids','Sport','Classic','Winter','Summer']
-    const techSubmenus = ['PC','Mobile','Television','Game','White','Drones','Accessory']
-    const kidsSubmenus = ['Shirts','Shorts','Shoes','Toys','Baby','Furniture','Etc.']
-    const carsSubmenus = ['Cars1','Cars2','Cars3','Cars4','Cars5','Cars6','Cars7']
-    const homeSubmenus = ['Home1','Home2','Home3','Home4','Home5','Home6','Home7']
-
-    const subMenuArr = [menSubmenus,womenSubmenus,shoesSubmenus,techSubmenus,kidsSubmenus,carsSubmenus,homeSubmenus]
-
-    return <div className='tabPanelContainer'>
-        <div className='leftPanel'>
+    return <div className="tabPanelContainer">
+        <div className="leftPanel">
             <ul>
                 {
-                subMenuArr[selectedMenuIndex].map((item,index)=>{
+                props.tabs && props.tabs[selectedMenuIndex] && props.tabs[selectedMenuIndex].subTabs.map((item,index)=>{
                     return <li key={index} onClick={()=>handleLeftClick(index)}>{item}</li>
                 })
                 }
             </ul>
         </div>
-        <div className='topPanel'>
+        <div className="topPanel">
              <ul>
              {
-                topMenus.map((item,index)=>{
-                    return <li key={index} onClick={()=>handleTopClick(index)}>{item}</li>
+                props.tabs && props.tabs.map((item,index)=>{
+                    return <li key={index} onClick={()=>handleTopClick(index)}>{item.title}</li>
                 })
             } 
             </ul>
         </div>
-        <div className='panelDisplay'>
+        <div className="panelDisplay">
             {
             exArr.map((item,index)=>{
-                    return <div key={index} className={selectedIndex === index ? "panel selected" : 'panel'} >{item}</div>
+                    return <div key={index} className={selectedIndex === index ? "panel selected" : "panel"} >{item}</div>
                 })
                 }
         </div>
     </div>
 }
+
+TabPanel.propTypes={
+    fetchTabHeaders: PropTypes.func
+}
+
+function mapStateToProps(state){
+    return{
+        tabs:state.tabs.tabs
+    }
+}
+
+export default connect(mapStateToProps,{fetchTabHeaders})(TabPanel)
